@@ -12,6 +12,7 @@ export default function Home() {
       </Head>
       <h1 className="text-red-500">TITRE</h1>
       <Link href="/heroes">Heros</Link>
+      <Link href="/stats">Stats</Link>
     </>
   );
 }
