@@ -1,15 +1,13 @@
 export async function getHeroes() {
-  const response = await fetch("https://overfast-api.tekrop.fr/heroes");
+  const response = await fetch(
+    "https://overfast-api.tekrop.fr/heroes?locale=fr-fr"
+  );
   const data = await response.json();
   return data;
 }
 
-const handleSubmit = async (event) => {
-  event.preventDefault();
-  const response = await fetch(
-    `https://overfast-api.tekrop.fr/stats/${playerName}`
-  );
+export async function getRoles() {
+  const response = await fetch("https://overfast-api.tekrop.fr/roles");
   const data = await response.json();
-  // stocker les stats du joueur dans l'état local
-  setPlayerStats(data);
-};
+  return data;
+}

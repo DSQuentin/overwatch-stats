@@ -10,14 +10,11 @@ function StatsPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(playerName);
     const formattedPlayerName = playerName.replace("#", "-");
-    console.log(formattedPlayerName);
     const response = await fetch(
       `https://overfast-api.tekrop.fr/players/${formattedPlayerName}/summary`
     );
     const data = await response.json();
-    console.log(data);
     setPlayerStats(data);
   };
 
