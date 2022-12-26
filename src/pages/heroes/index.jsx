@@ -1,5 +1,5 @@
 import { getHeroes, getRoles } from "@/utils/api";
-import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function HeroesPage() {
@@ -46,12 +46,14 @@ export default function HeroesPage() {
         <button onClick={() => setSelectedRole(null)}>Tous</button>
       </div>
 
-      <div className="flex justify-around flex-wrap">
-        {filteredHeroes.map((hero) => (
-          <div key={hero.id} className="mb-2">
-            <p>{hero.name}</p>
-            <img src={hero.portrait} alt={hero.name} />
-          </div>
+      <div className="flex justify-between flex-wrap">
+        {heroes.map((hero) => (
+          <Link key={hero.key} href={`/heroes/${hero.key}`}>
+            <div>
+              <p>{hero.name}</p>
+              <img src={hero.portrait} alt={hero.name} />
+            </div>
+          </Link>
         ))}
       </div>
     </div>

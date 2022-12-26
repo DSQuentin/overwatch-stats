@@ -11,3 +11,11 @@ export async function getRoles() {
   const data = await response.json();
   return data;
 }
+
+export async function getHeroData(id) {
+  const response = await fetch(
+    `https://overfast-api.tekrop.fr/heroes/${id}?locale=fr-fr`
+  );
+  const data = await response.json();
+  return data;
+}
