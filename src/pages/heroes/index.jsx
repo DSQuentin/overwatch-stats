@@ -25,8 +25,6 @@ export default function HeroesPage() {
     ? heroes.filter((hero) => hero.role === selectedRole)
     : heroes;
 
-  console.log(roles);
-
   function getRoleIconUrl(roleName) {
     const role = roles.find(
       (r) => r.name.toLowerCase() === roleName.toLowerCase()
@@ -62,6 +60,7 @@ export default function HeroesPage() {
         >
           Tous
         </button>
+        <Link href="/">Retour</Link>
       </div>
 
       <div className="flex justify-between flex-wrap">
