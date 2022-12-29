@@ -77,7 +77,7 @@ export default function HeroPage() {
             <li key={ability.id}>
               <img
                 src={ability.icon}
-                className="border-2 border-orange-400 bg-gray-400"
+                className="border-2 border-orange-400 bg-gray-400 h-[100px] w-auto"
                 alt={ability.name}
                 onClick={toggleAbilities}
               />
@@ -85,8 +85,8 @@ export default function HeroPage() {
             </li>
           ))}
         </ul>
+        <Link href="/heroes">Retour</Link>
       </div>
-      <Link href="/heroes">Retour</Link>
     </>
   );
 }
