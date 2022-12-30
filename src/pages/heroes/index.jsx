@@ -1,4 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+import HeroesCard from "@/components/HeroesCard";
+import RolesFilter from "@/components/RolesFilter";
 import { getHeroes, getRoles } from "@/utils/api";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -21,10 +23,6 @@ export default function HeroesPage() {
 
   const [roles, setRoles] = useState([]);
 
-  const filteredHeroes = selectedRole
-    ? heroes.filter((hero) => hero.role === selectedRole)
-    : heroes;
-
   function getRoleIconUrl(roleName) {
     const role = roles.find(
       (r) => r.name.toLowerCase() === roleName.toLowerCase()
@@ -33,49 +31,35 @@ export default function HeroesPage() {
     return role ? role.icon : "";
   }
 
+  const filteredHeroes = selectedRole
+    ? heroes.filter((hero) => hero.role === selectedRole)
+    : heroes;
+
   return (
-    <div>
-      <h1>Liste des héros</h1>
+    <div className="m-12">
+      <h1 className="text-center text-7xl text-customBlack">Liste des héros</h1>
       <div>
-        {roles.map((role) => (
-          <button
-            key={role.id}
-            onClick={() => setSelectedRole(role.name.toLowerCase())}
-            className={
-              selectedRole === role.name.toLowerCase()
-                ? "bg-gray-700 mx-2 "
-                : "bg-gray-500 mx-2 "
-            }
-          >
-            <img
-              src={getRoleIconUrl(role.name)}
-              className="p-4"
-              alt={role.name}
-            />
-          </button>
-        ))}
-        <button
-          onClick={() => setSelectedRole(null)}
-          className={selectedRole === null ? "bg-gray-200" : ""}
-        >
-          Tous
-        </button>
-        <Link href="/">Retour</Link>
+        <RolesFilter
+          roles={roles}
+          selectedRole={selectedRole}
+          setSelectedRole={setSelectedRole}
+          getRoleIconUrl={getRoleIconUrl}
+        />
+        <Link href="/" className="ml-2">
+          Retour
+        </Link>
       </div>
 
       <div className="flex justify-between flex-wrap">
         {filteredHeroes.map((hero) => (
-          <Link key={hero.key} href={`/heroes/${hero.key}`}>
-            <div>
-              <p>{hero.name}</p>
-              <img src={hero.portrait} alt={hero.name} />
-              <img
-                src={getRoleIconUrl(hero.role)}
-                className="bg-gray-700 p-4"
-                alt={hero.role}
-              />
-            </div>
-          </Link>
+          <HeroesCard
+            key={hero.key}
+            name={hero.name}
+            role={hero.role}
+            portrait={hero.portrait}
+            roles={roles}
+            getRoleIconUrl={getRoleIconUrl}
+          />
         ))}
       </div>
     </div>
