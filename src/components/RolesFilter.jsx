@@ -11,7 +11,11 @@ export default function RolesFilter({
     <>
       <button
         onClick={() => setSelectedRole(null)}
-        className={selectedRole === null ? "bg-gray-200" : ""}
+        className={
+          selectedRole === null
+            ? "px-4 py-2 border-2 border-customGray bg-gray-900"
+            : "px-4 py-2 border-2 border-customGray bg-gray-500"
+        }
       >
         Tous
       </button>

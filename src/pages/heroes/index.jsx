@@ -21,13 +21,13 @@ export default function HeroesPage() {
     fetchData();
   }, []);
 
+  console.log(heroes);
   const [roles, setRoles] = useState([]);
 
   function getRoleIconUrl(roleName) {
     const role = roles.find(
       (r) => r.name.toLowerCase() === roleName.toLowerCase()
     );
-    console.log(role);
     return role ? role.icon : "";
   }
 
@@ -52,14 +52,14 @@ export default function HeroesPage() {
 
       <div className="flex justify-between flex-wrap">
         {filteredHeroes.map((hero) => (
-          <HeroesCard
-            key={hero.key}
-            name={hero.name}
-            role={hero.role}
-            portrait={hero.portrait}
-            roles={roles}
-            getRoleIconUrl={getRoleIconUrl}
-          />
+          <Link key={hero.key} href={`/heroes/${hero.key}`}>
+            <HeroesCard
+              name={hero.name}
+              role={hero.role}
+              portrait={hero.portrait}
+              getRoleIconUrl={getRoleIconUrl}
+            />
+          </Link>
         ))}
       </div>
     </div>

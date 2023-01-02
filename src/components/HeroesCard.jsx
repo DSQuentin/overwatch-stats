@@ -2,27 +2,18 @@
 import Link from "next/link";
 import React from "react";
 
-export default function HeroesCard({
-  key,
-  name,
-  role,
-  portrait,
-  roles,
-  getRoleIconUrl,
-}) {
+export default function HeroesCard({ name, role, portrait, getRoleIconUrl }) {
   return (
     <>
-      <Link key={key} href={`/heroes/${key}`}>
-        <div>
-          <p>{name}</p>
-          <img src={portrait} alt={name} />
-          <img
-            src={getRoleIconUrl(role)}
-            className="bg-gray-700 p-4"
-            alt={role}
-          />
-        </div>
-      </Link>
+      <div>
+        <p>{name}</p>
+        <img src={portrait} alt={name} />
+        <img
+          src={getRoleIconUrl(role)}
+          className="bg-gray-700 p-4"
+          alt={role}
+        />
+      </div>
     </>
   );
 }
