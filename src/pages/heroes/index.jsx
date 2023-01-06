@@ -36,21 +36,24 @@ export default function HeroesPage() {
     : heroes;
 
   return (
-    <div className="m-12">
-      <h1 className="text-center text-7xl text-customBlack">Liste des héros</h1>
-      <div>
+    <div className="my-12 mx-24">
+      <h1 className="text-center text-5xl text-customBlack">HÉROS</h1>
+      <div className="flex items-center justify-between">
         <RolesFilter
           roles={roles}
           selectedRole={selectedRole}
           setSelectedRole={setSelectedRole}
           getRoleIconUrl={getRoleIconUrl}
         />
-        <Link href="/" className="ml-2">
+        <Link
+          href="/"
+          className="text-customBlack hover:text-black bg-gray-200 hover:bg-gray-300 border-2 rounded-sm border-white px-8 py-2.5 text-center inline-flex items-center mr-2 mb-2 gap-2 text-lg"
+        >
           Retour
         </Link>
       </div>
 
-      <div className="flex justify-between flex-wrap">
+      <div className="flex justify-center flex-wrap gap-4">
         {filteredHeroes.map((hero) => (
           <Link key={hero.key} href={`/heroes/${hero.key}`}>
             <HeroesCard
